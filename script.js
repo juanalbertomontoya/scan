@@ -8,15 +8,11 @@ document.getElementById('scanBtn').addEventListener('click', function () {
         // Insertar el valor escaneado en el input de DNI
         document.getElementById('dni').value = decodedText;
         
-        // Detener el escaneo
-        html5QrCode.stop().then(() => {
-            console.log("Escaneo detenido.");
-        }).catch(err => {
-            console.log("Error al detener el escaneo:", err);
-        });
-
-        // Enviar el formulario automáticamente
-        document.getElementById('dniForm').submit();
+        // Esperar brevemente antes de enviar el formulario para asegurarse de que el valor se ha insertado
+        setTimeout(function() {
+            // Enviar el formulario automáticamente
+            document.getElementById('dniForm').submit();
+        }, 100); // 100ms de retraso
     };
 
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
